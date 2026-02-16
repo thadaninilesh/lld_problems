@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/airlineManagementSystem/airlineManagementSystem.iml" filepath="$PROJECT_DIR$/airlineManagementSystem/airlineManagementSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circuitBreaker/circuitBreaker.iml" filepath="$PROJECT_DIR$/circuitBreaker/circuitBreaker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/currencyExchange/currencyExchange.iml" filepath="$PROJECT_DIR$/currencyExchange/currencyExchange.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverySystem/deliverySystem.iml" filepath="$PROJECT_DIR$/deliverySystem/deliverySystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ipFiltering/ipFiltering.iml" filepath="$PROJECT_DIR$/ipFiltering/ipFiltering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meetingManager/meetingManager.iml" filepath="$PROJECT_DIR$/meetingManager/meetingManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parkingLot/parkingLot.iml" filepath="$PROJECT_DIR$/parkingLot/parkingLot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paymentProcessing/paymentProcessing.iml" filepath="$PROJECT_DIR$/paymentProcessing/paymentProcessing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rateLimiter/rateLimiter.iml" filepath="$PROJECT_DIR$/rateLimiter/rateLimiter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/romanConverter/romanConverter.iml" filepath="$PROJECT_DIR$/romanConverter/romanConverter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shoppingCart/shoppingCart.iml" filepath="$PROJECT_DIR$/shoppingCart/shoppingCart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/textEditor/textEditor.iml" filepath="$PROJECT_DIR$/textEditor/textEditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/undergroundRailwaySystem/undergroundRailwaySystem.iml" filepath="$PROJECT_DIR$/undergroundRailwaySystem/undergroundRailwaySystem.iml" />
+    </modules>
+  </component>
+</project>
