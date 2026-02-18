@@ -8,13 +8,16 @@
       <module fileurl="file://$PROJECT_DIR$/deliverySystem/deliverySystem.iml" filepath="$PROJECT_DIR$/deliverySystem/deliverySystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipFiltering/ipFiltering.iml" filepath="$PROJECT_DIR$/ipFiltering/ipFiltering.iml" />
       <module fileurl="file://$PROJECT_DIR$/meetingManager/meetingManager.iml" filepath="$PROJECT_DIR$/meetingManager/meetingManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meetingRoomManager/meetingRoomManager.iml" filepath="$PROJECT_DIR$/meetingRoomManager/meetingRoomManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/parkingLot/parkingLot.iml" filepath="$PROJECT_DIR$/parkingLot/parkingLot.iml" />
       <module fileurl="file://$PROJECT_DIR$/paymentProcessing/paymentProcessing.iml" filepath="$PROJECT_DIR$/paymentProcessing/paymentProcessing.iml" />
       <module fileurl="file://$PROJECT_DIR$/rateLimiter/rateLimiter.iml" filepath="$PROJECT_DIR$/rateLimiter/rateLimiter.iml" />
       <module fileurl="file://$PROJECT_DIR$/romanConverter/romanConverter.iml" filepath="$PROJECT_DIR$/romanConverter/romanConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/shoppingCart/shoppingCart.iml" filepath="$PROJECT_DIR$/shoppingCart/shoppingCart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testLearning/testLearning.iml" filepath="$PROJECT_DIR$/testLearning/testLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/textEditor/textEditor.iml" filepath="$PROJECT_DIR$/textEditor/textEditor.iml" />
       <module fileurl="file://$PROJECT_DIR$/undergroundRailwaySystem/undergroundRailwaySystem.iml" filepath="$PROJECT_DIR$/undergroundRailwaySystem/undergroundRailwaySystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/watchVideo/watchVideo.iml" filepath="$PROJECT_DIR$/watchVideo/watchVideo.iml" />
     </modules>
   </component>
 </project>
