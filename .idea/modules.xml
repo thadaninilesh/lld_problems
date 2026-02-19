@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/circuitBreaker/circuitBreaker.iml" filepath="$PROJECT_DIR$/circuitBreaker/circuitBreaker.iml" />
       <module fileurl="file://$PROJECT_DIR$/currencyExchange/currencyExchange.iml" filepath="$PROJECT_DIR$/currencyExchange/currencyExchange.iml" />
       <module fileurl="file://$PROJECT_DIR$/deliverySystem/deliverySystem.iml" filepath="$PROJECT_DIR$/deliverySystem/deliverySystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ecommerceInventoryScheduling/ecommerceInventoryScheduling.iml" filepath="$PROJECT_DIR$/ecommerceInventoryScheduling/ecommerceInventoryScheduling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fintechProcessLargeFile/fintechProcessLargeFile.iml" filepath="$PROJECT_DIR$/fintechProcessLargeFile/fintechProcessLargeFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotelReservation/hotelReservation.iml" filepath="$PROJECT_DIR$/hotelReservation/hotelReservation.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipFiltering/ipFiltering.iml" filepath="$PROJECT_DIR$/ipFiltering/ipFiltering.iml" />
       <module fileurl="file://$PROJECT_DIR$/meetingManager/meetingManager.iml" filepath="$PROJECT_DIR$/meetingManager/meetingManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/meetingRoomManager/meetingRoomManager.iml" filepath="$PROJECT_DIR$/meetingRoomManager/meetingRoomManager.iml" />
