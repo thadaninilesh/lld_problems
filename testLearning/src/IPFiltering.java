@@ -10,27 +10,27 @@ public class IPFiltering {
     }
 
     public void addPattern(String ipAddress) {
-        String[] pattern = split(ipAddress);
+        String[] pattern = ipAddress.split("\\.");//split(ipAddress);
         TrieNode current = root;
+
         for (String p: pattern) {
-            int index;
+            int idx;
             if (p.equals("*")) {
-                // this is wildcard
-                index = WILDCARD;
+                idx = WILDCARD;
             } else {
-                index = Integer.parseInt(p);
+                idx = Integer.parseInt(p);
             }
-            if (current.children[index] == null) {
-                current.children[index] = new TrieNode();
+
+            if (current.children[idx] == null) {
+                current.children[idx] = new TrieNode();
             }
-            current = current.children[index];
+            current = current.children[idx];
         }
         current.isEndOfPattern = true;
     }
 
     public boolean matches(String ipAddress) {
         String[] pattern = split(ipAddress);
-        boolean match = false;
         int []parts = new int[4];
         for (int i = 0; i < 4; i++) {
             parts[i] = Integer.parseInt(pattern[i]);
@@ -44,34 +44,31 @@ public class IPFiltering {
             return node.isEndOfPattern;
         }
 
-        int currentOctet = parts[level];
-        if (node.children[currentOctet] != null) {
-            if (search(node.children[currentOctet], parts, ++level)) {
+        int current = parts[level];
+        if (node.children[current] != null) {
+            if(search(node.children[current], parts, level + 1)) {
                 return true;
             }
         }
+
         if (node.children[WILDCARD] != null) {
-            if (search(node.children[WILDCARD], parts, ++level)) {
-                return true;
-            }
+            return true;
         }
         return false;
     }
 
     private String[] split(String pattern) {
         String[] splitPattern = new String[4];
-        int count = 0;
-        int n = pattern.length();
         int start = 0;
-        for (int i = 0; i < n; i++) {
+        int idx = 0;
+        for (int i = 0; i < pattern.length(); i++) {
             if (pattern.charAt(i) == '.') {
-                // received a . | add to pattern
-                splitPattern[count++] = pattern.substring(start, i);
+                // add to splitPattern
+                splitPattern[idx++] = pattern.substring(start, i);
                 start = i + 1;
             }
-
-            splitPattern[count] = pattern.substring(start);
         }
+        splitPattern[idx] = pattern.substring(start);
         return splitPattern;
     }
 

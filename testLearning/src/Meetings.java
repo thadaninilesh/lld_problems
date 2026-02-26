@@ -3,8 +3,8 @@ import java.util.*;
 public class Meetings {
 
     static class Interval {
-        private long start;
-        private long end;
+        long start;
+        long end;
 
         public Interval(long start, long end) {
             this.start = start;
@@ -16,20 +16,16 @@ public class Meetings {
         if (meetings.size() < 2) {
             return false;
         }
-        List<Interval> sortedMeetings = new ArrayList<>(meetings);
-        sortedMeetings.sort(Comparator.comparing(m -> m.start));
-
-        for (int i = 1; i < sortedMeetings.size(); i++) {
-            Interval prev = sortedMeetings.get(i - 1);
-            Interval curr = sortedMeetings.get(i);
-
+        List<Interval> sorted = new ArrayList<>(meetings);
+        sorted.sort(Comparator.comparing(m -> m.start));
+        for (int i = 1; i < meetings.size(); i++) {
+            Interval prev = sorted.get(i-1);
+            Interval curr = sorted.get(i);
             if (curr.start < prev.end) {
                 return true;
             }
         }
-
         return false;
-
     }
 
     public static void main(String[] args) {

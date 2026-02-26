@@ -1,80 +1,73 @@
+import javax.swing.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 class Operation {
     enum OperationType {
-        INSERT,
-        DELETE
+        INSERT, DELETE
     }
+
     OperationType type;
     char character;
     int position;
 
-    public Operation(OperationType type, char character, int position) {
-        this.type = type;
-        this.character = character;
+    public Operation(OperationType operationType, char c, int position) {
+        this.type = operationType;
+        this.character = c;
         this.position = position;
     }
 }
 
 public class TextEditor {
 
-    Deque<Operation> operationsStack = new ArrayDeque<>();
-    StringBuilder sb = new StringBuilder();
-    Deque<Operation> reverseOperationStack = new ArrayDeque<>();
+    Deque<Operation> operations = new LinkedList<>();
+    Deque<Operation> reverseOperations = new LinkedList<>();
+    StringBuilder buffer = new StringBuilder();
 
     void delete(int position) {
-        if (sb.length() < position || position < 0) {
-            throw new IllegalArgumentException();
+        if (buffer.length() > position) {
+            char deletedChar = buffer.charAt(position);
+            operations.add(new Operation(Operation.OperationType.DELETE, deletedChar, position));
+            buffer.deleteCharAt(position);
         }
-
-        char c = sb.charAt(position);
-        sb.deleteCharAt(position);
-        operationsStack.add (new Operation(Operation.OperationType.DELETE, c, position));
-        reverseOperationStack.clear();
+        reverseOperations.clear();
     }
 
     void insert(char c, int position) {
-        if (position > sb.length() || position < 0) {
+        if (buffer.length() < position || position < 0) {
             throw new IllegalArgumentException();
         }
-
-        sb.insert(position, c);
-        operationsStack.add(new Operation(Operation.OperationType.INSERT, c, position));
-        reverseOperationStack.clear();
+        buffer.insert(position, c);
+        operations.add(new Operation(Operation.OperationType.INSERT, c, position));
+        reverseOperations.clear();
     }
 
     void undo() {
-        // take it from the operation stack, add it to reverse stack
-        if (operationsStack.isEmpty()) {
+        if (operations.isEmpty()) {
             return;
         }
-        Operation lastOperation = operationsStack.pollLast();
-        int position = lastOperation.position;
-        char c = lastOperation.character;
-        if (lastOperation.type == Operation.OperationType.INSERT) {
-            sb.deleteCharAt(position);
-            reverseOperationStack.add(new Operation(Operation.OperationType.DELETE, c, position));
-        } else {
-            sb.insert(position, c);
-            reverseOperationStack.add(new Operation(Operation.OperationType.INSERT, c, position));
+        Operation operation = operations.pollLast();
+        if (operation.type.equals(Operation.OperationType.INSERT)) {
+            buffer.deleteCharAt(operation.position);
+            reverseOperations.add(new Operation(Operation.OperationType.DELETE, operation.character, operation.position));
+        }  else {
+            buffer.insert(operation.position, operation.character);
+            reverseOperations.add(new Operation(Operation.OperationType.INSERT, operation.character, operation.position));
         }
     }
 
     void redo() {
-        if (reverseOperationStack.isEmpty()) {
+        if (reverseOperations.isEmpty()) {
             return;
         }
-        Operation lastReverseOperation = reverseOperationStack.pollLast();
-        int position = lastReverseOperation.position;
-        char c = lastReverseOperation.character;
-        if (lastReverseOperation.type == Operation.OperationType.DELETE) {
-            // insert
-            sb.insert(position, c);
-            operationsStack.add(new Operation(Operation.OperationType.INSERT, c, position));
+        Operation operation = reverseOperations.pollLast();
+        if (operation.type.equals(Operation.OperationType.INSERT)) {
+            buffer.deleteCharAt(operation.position);
+            operations.add(new Operation(Operation.OperationType.DELETE, operation.character, operation.position));
         } else {
-            sb.deleteCharAt(position);
-            operationsStack.add(new Operation(Operation.OperationType.DELETE, c, position));
+            buffer.insert(operation.position, operation.character);
+            operations.add(new Operation(Operation.OperationType.INSERT, operation.character, operation.position));
         }
     }
 
@@ -93,7 +86,7 @@ public class TextEditor {
     }
 
     public String getText() {
-        return sb.toString();
+        return buffer.toString();
     }
 
     private static void testBasicInsertDelete() {

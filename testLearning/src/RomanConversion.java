@@ -21,19 +21,18 @@ public class RomanConversion {
         if (number < 1 || number > 3999) {
             throw new IllegalArgumentException();
         }
-        return cache.computeIfAbsent(number, this::computeRoman);
+        return computeRoman(number);
     }
 
     private String computeRoman(int number) {
-        StringBuilder roman = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < VALUES.length; i++) {
             while (number >= VALUES[i]) {
+                sb.append(SYMBOLS[i]);
                 number -= VALUES[i];
-                roman.append(SYMBOLS[i]);
             }
         }
-        return roman.toString();
+        return sb.toString();
     }
 
     public static void main(String[] args) {
