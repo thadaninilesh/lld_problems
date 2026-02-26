@@ -32,7 +32,7 @@ import java.util.function.Supplier;
      private final Supplier<String> protectedFunction;
      private final LongSupplier clock;
 
-     private State state = State.CLOSED;
+     private State state = State.CLOSED; // allow all requests
 
      private int consecutiveFailures = 0;
      private int openAttempts = 0;
