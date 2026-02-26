@@ -107,7 +107,7 @@ public class ParkingLot {
             System.out.println("No parking available for this type");
             return;
         }
-        ParkingSpace space = availableSpacesByType.poll();
+        ParkingSpace space = availableSpacesByType.poll(); // poll removes it from available space
         space.setOccupied(true);
         occupiedSpots.put(vehicleId, space);
         Ticket ticket = new Ticket(UUID.randomUUID().toString(), vehicleId, System.currentTimeMillis());
