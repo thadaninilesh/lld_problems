@@ -54,14 +54,20 @@ public class ParkingLot {
 
     private final static BigDecimal parkingFeePerHour = BigDecimal.valueOf(5);
 
+    private BigDecimal firstTwoHoursFlatRate = new BigDecimal("10.00"); // $x flat fee for up to 2 hrs
+    private BigDecimal subsequentHourlyRate = new BigDecimal("5.00");
+
     private final int currentOccupancy = 0;
 
+    // vehicleId vs parkingSpace
     private final Map<String, ParkingSpace> occupiedSpots = new ConcurrentHashMap<>();
 
+    // parking type vs space
     private final Map<Type, LinkedBlockingQueue<ParkingSpace>> availableSpace = new ConcurrentHashMap<>();
 
     private final Map<ParkingSpace, ParkingFloor> parkingSpaceParkingFloorMap = new ConcurrentHashMap<>();
 
+    // vehicleId with tickets
     private final Map<String, Ticket> vehicleTickets = new ConcurrentHashMap<>();
 
     public ParkingLot(String lotId, List<ParkingFloor> floors, int capacity) {
@@ -125,8 +131,18 @@ public class ParkingLot {
         LinkedBlockingQueue<ParkingSpace> availableSpaces = availableSpace.getOrDefault(space.getType(), new LinkedBlockingQueue<>());
         availableSpaces.add(space);
         availableSpace.put(space.getType(), availableSpaces);
-
+//        long hoursParked = (exitTime - entryTime) / (1000 * 60 * 60);
+//        BigDecimal totalFee;
+//
+//        if (hoursParked < 2) {
+//            totalFee = firstTwoHoursFlatRate;
+//        } else {
+//            BigDecimal extraHours = BigDecimal.valueOf(hoursParked - 2);
+//            BigDecimal extraFee = subsequentHourlyRate.multiply(extraHours);
+//            totalFee = firstTwoHoursFlatRate.add(extraFee);
+//        }
         BigDecimal totalFee = parkingFeePerHour.multiply(BigDecimal.valueOf((exitTime - entryTime) / (1000 * 60 * 60) + 1));
+
 
         System.out.println("Total fee to be paid: " + totalFee);
 
