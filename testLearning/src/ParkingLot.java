@@ -65,6 +65,7 @@ public class ParkingLot {
     // parking type vs space
     private final Map<Type, LinkedBlockingQueue<ParkingSpace>> availableSpace = new ConcurrentHashMap<>();
 
+    // space with floor
     private final Map<ParkingSpace, ParkingFloor> parkingSpaceParkingFloorMap = new ConcurrentHashMap<>();
 
     // vehicleId with tickets
