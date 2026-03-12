@@ -22,7 +22,7 @@ class Room {
         this.equipments = equipments;
     }
 
-    public boolean canAccomodate(int requiredCapacity, Equipment equipment) {
+    public boolean canAccommodate(int requiredCapacity, Equipment equipment) {
 
         if (this.capacity < requiredCapacity) return false;
         if (equipment != null && !equipments.contains(equipment)) return false;
@@ -56,7 +56,7 @@ public class MeetingRoomManager {
 
         // filter rooms based on physical reqt
         for (Room room: rooms) {
-            if (room.canAccomodate(capacity, equipment)) {
+            if (room.canAccommodate(capacity, equipment)) {
                 room.lock.writeLock().lock();
                 try {
                     if (isRoomAvailable(room.id, startTime, endTime)) {

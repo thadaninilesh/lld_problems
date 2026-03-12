@@ -34,7 +34,7 @@ public class CostTracker {
     public void getPayUptoTime(long uptoTime) {
         for (Driver d: driversInSystem.values()) {
             for (Delivery delivery: d.getDeliveries()) {
-                if (delivery.getEndTime() <= uptoTime && delivery.getStartTime() >= uptoTime) {
+                if (delivery.getEndTime() <= uptoTime && delivery.getStartTime() >= d.getLastPayTime()) {
                     totalPaidCost += delivery.getCost(delivery.getStartTime(), delivery.getEndTime(), d.getRate());
                 }
                 d.setLastPayTime(Math.max(d.getLastPayTime(), uptoTime));
